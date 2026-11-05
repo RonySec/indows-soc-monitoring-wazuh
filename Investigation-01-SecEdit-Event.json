@@ -1,0 +1,101 @@
+{
+  "_index": "wazuh-alerts-4.x-2026.10.28",
+  "_id": "9Wn9g6EB-4lRpwEFJx-1",
+  "_score": null,
+  "_source": {
+    "input": {
+      "type": "log"
+    },
+    "agent": {
+      "ip": "192.168.56.3",
+      "name": "WIN-SOC-LAB",
+      "id": "001"
+    },
+    "manager": {
+      "name": "wazuh-server"
+    },
+    "data": {
+      "win": {
+        "eventdata": {
+          "originalFileName": "SeCEdit",
+          "image": "C:\\\\Windows\\\\SysWOW64\\\\SecEdit.exe",
+          "product": "Microsoft® Windows® Operating System",
+          "parentProcessGuid": "{66feda83-4dd7-6ae2-8e03-000000000900}",
+          "description": "Windows Security Configuration Editor Command Tool",
+          "logonGuid": "{66feda83-c6d2-6ae1-e703-000000000000}",
+          "parentCommandLine": "powershell secedit /export /cfg $env:TEMP\\\\secpol.cfg; Get-Content $env:TEMP\\\\secpol.cfg | Select-String \\\"PasswordHistorySize\\\"; Remove-Item $env:TEMP\\\\secpol.cfg",
+          "processGuid": "{66feda83-4de8-6ae2-9403-000000000900}",
+          "logonId": "0x3e7",
+          "parentProcessId": "7900",
+          "processId": "1428",
+          "currentDirectory": "C:\\\\Program Files (x86)\\\\ossec-agent\\\\",
+          "utcTime": "2026-10-28 19:32:56.765",
+          "hashes": "SHA256=4CDF95EF7BEC023FED416EA34905055132374407D565BF242B69159352AD546F",
+          "parentImage": "C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+          "company": "Microsoft Corporation",
+          "commandLine": "\\\"C:\\\\WINDOWS\\\\system32\\\\SecEdit.exe\\\" /export /cfg C:\\\\WINDOWS\\\\TEMP\\\\secpol.cfg",
+          "integrityLevel": "System",
+          "fileVersion": "10.0.26100.7019 (WinBuild.160101.0800)",
+          "user": "NT AUTHORITY\\\\SYSTEM",
+          "terminalSessionId": "0",
+          "parentUser": "NT AUTHORITY\\\\SYSTEM"
+        },
+        "system": {
+          "eventID": "1",
+          "keywords": "0x8000000000000000",
+          "providerGuid": "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
+          "level": "4",
+          "channel": "Microsoft-Windows-Sysmon/Operational",
+          "opcode": "0",
+          "message": "\"Process Create:\r\nRuleName: -\r\nUtcTime: 2026-10-28 19:32:56.765\r\nProcessGuid: {66feda83-4de8-6ae2-9403-000000000900}\r\nProcessId: 1428\r\nImage: C:\\Windows\\SysWOW64\\SecEdit.exe\r\nFileVersion: 10.0.26100.7019 (WinBuild.160101.0800)\r\nDescription: Windows Security Configuration Editor Command Tool\r\nProduct: Microsoft® Windows® Operating System\r\nCompany: Microsoft Corporation\r\nOriginalFileName: SeCEdit\r\nCommandLine: \"C:\\WINDOWS\\system32\\SecEdit.exe\" /export /cfg C:\\WINDOWS\\TEMP\\secpol.cfg\r\nCurrentDirectory: C:\\Program Files (x86)\\ossec-agent\\\r\nUser: NT AUTHORITY\\SYSTEM\r\nLogonGuid: {66feda83-c6d2-6ae1-e703-000000000000}\r\nLogonId: 0x3E7\r\nTerminalSessionId: 0\r\nIntegrityLevel: System\r\nHashes: SHA256=4CDF95EF7BEC023FED416EA34905055132374407D565BF242B69159352AD546F\r\nParentProcessGuid: {66feda83-4dd7-6ae2-8e03-000000000900}\r\nParentProcessId: 7900\r\nParentImage: C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe\r\nParentCommandLine: powershell secedit /export /cfg $env:TEMP\\secpol.cfg; Get-Content $env:TEMP\\secpol.cfg | Select-String \"PasswordHistorySize\"; Remove-Item $env:TEMP\\secpol.cfg\r\nParentUser: NT AUTHORITY\\SYSTEM\"",
+          "version": "5",
+          "systemTime": "2026-10-28T19:32:56.7964311Z",
+          "eventRecordID": "390",
+          "threadID": "8684",
+          "computer": "DESKTOP-2B7SQJ9",
+          "task": "1",
+          "processID": "3776",
+          "severityValue": "INFORMATION",
+          "providerName": "Microsoft-Windows-Sysmon"
+        }
+      }
+    },
+    "rule": {
+      "firedtimes": 1,
+      "mail": false,
+      "level": 4,
+      "description": "C:\\\\Windows\\\\SysWOW64\\\\SecEdit.exe binary in a suspicious location launched by C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe",
+      "groups": [
+        "sysmon",
+        "sysmon_eid1_detections",
+        "windows"
+      ],
+      "mitre": {
+        "technique": [
+          "PowerShell"
+        ],
+        "id": [
+          "T1059.001"
+        ],
+        "tactic": [
+          "Execution"
+        ]
+      },
+      "id": "92066"
+    },
+    "location": "EventChannel",
+    "decoder": {
+      "name": "windows_eventchannel"
+    },
+    "id": "1793215760.427510",
+    "timestamp": "2026-10-28T19:29:20.176+0000"
+  },
+  "fields": {
+    "timestamp": [
+      "2026-10-28T19:29:20.176Z"
+    ]
+  },
+  "sort": [
+    1793215760176
+  ]
+}
